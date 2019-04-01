@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topcheer.spdbybt.mapper.YbtModuleElemsMapper" >
+  <resultMap id="BaseResultMap" type="com.topcheer.spdbybt.entity.YbtModuleElems" >
+    <id column="atomTypeId" property="atomtypeid" jdbcType="CHAR" />
+    <result column="atomTypeName" property="atomtypename" jdbcType="VARCHAR" />
+    <result column="operatorBankCode" property="operatorbankcode" jdbcType="VARCHAR" />
+    <result column="operatorCode" property="operatorcode" jdbcType="VARCHAR" />
+    <result column="updateDate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    yme.atomTypeId,  yme.atomTypeName,  yme.operatorBankCode,  yme.operatorCode,  yme.updateDate,  yme.updateTime,
+     yme.remark1,  yme.remark2,  yme.remark3,  yme.remark4,  yme.remark5
+  </sql>
+
+
+
+  <sql id="SQL_SYSELEM_WHERE">
+    <if test="atomtypeid != null">
+      AND  yme.atomTypeId = #{atomtypeid}
+    </if>
+    <if test="atomtypename != null and atomtypename.length() != 0">
+      AND yme.atomTypeName like '%${atomtypename}%'
+    </if>
+    <if test="operatorbankcode != null and operatorbankcode.length() != 0">
+      AND yme.operatorBankCode = #{operatorbankcode}
+    </if>
+    <if test="operatorcode != null and operatorcode.length() != 0">
+      AND yme.operatorCode = #{operatorcode}
+    </if>
+    <if test="updatedate != null and updatedate.length() != 0">
+      AND yme.updateDate = #{updatedate}
+    </if>
+    <if test="updatetime != null and updatetime.length() != 0">
+      AND yme.updateTime  = #{updatetime}
+    </if>
+    <if test="remark1 != null and remark1.length() != 0">
+      AND yme.remark1  = #{remark1}
+    </if>
+    <if test="remark2 != null and remark2.length() != 0">
+      AND yme.remark2  = #{remark2}
+    </if>
+    <if test="remark3 != null and remark3.length() != 0">
+      AND yme.remark3  = #{remark3}
+    </if>
+    <if test="remark4 != null and remark4.length() != 0">
+      AND yme.remark4  = #{remark4}
+    </if>
+    <if test="remark5 != null and remark5.length() != 0">
+      AND yme.remark5  = #{remark5}
+    </if>
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ybt_moduleelems yme
+    where yme.atomTypeId = #{atomtypeid,jdbcType=CHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ybt_moduleelems
+    where atomTypeId = #{atomtypeid,jdbcType=CHAR}
+  </delete>
+
+
+  <insert id="insertSelective" parameterType="com.topcheer.spdbybt.entity.YbtModuleElems" >
+    insert into ybt_moduleelems
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="atomtypeid != null" >
+        atomTypeId,
+      </if>
+      <if test="atomtypename != null" >
+        atomTypeName,
+      </if>
+      <if test="operatorbankcode != null" >
+        operatorBankCode,
+      </if>
+      <if test="operatorcode != null" >
+        operatorCode,
+      </if>
+      <if test="updatedate != null" >
+        updateDate,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="atomtypeid != null" >
+        #{atomtypeid,jdbcType=CHAR},
+      </if>
+      <if test="atomtypename != null" >
+        #{atomtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorbankcode != null" >
+        #{operatorbankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorcode != null" >
+        #{operatorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.topcheer.spdbybt.entity.YbtModuleElems" >
+    update ybt_moduleelems
+    <set >
+      <if test="atomtypeid != null" >
+        atomTypeId = #{atomtypeid,jdbcType=CHAR},
+      </if>
+      <if test="atomtypename != null" >
+        atomTypeName = #{atomtypename,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorbankcode != null" >
+        operatorBankCode = #{operatorbankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorcode != null" >
+        operatorCode = #{operatorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        updateDate = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where atomTypeId = #{atomtypeid,jdbcType=CHAR}
+  </update>
+
+<!-- 查询所有的交易模块信息 -->
+  <select id="getSysElemList" resultMap="BaseResultMap" parameterType="com.topcheer.spdbybt.entity.YbtModuleElems">
+
+    select  <include refid="Base_Column_List" />
+    from ybt_moduleelems yme
+    <where>
+      <include  refid="SQL_SYSELEM_WHERE"/>
+    </where>
+  </select>
+
+  <!-- 根据交易模块名称查询交易模块信息 -->
+  <select id="selectByAtomtypename" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from ybt_moduleelems yme
+    where yme.atomTypeName = #{atomtypename,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

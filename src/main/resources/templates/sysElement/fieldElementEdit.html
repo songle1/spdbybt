@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+	<title>数据字段元素设置编辑</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript" th:src="@{/scripts/jquery/jquery-1.7.1.js}"></script>
+	<link th:href="@{/style/authority/basic_layout.css}" rel="stylesheet" type="text/css">
+	<link th:href="@{/style/authority/common_style.css}" rel="stylesheet" type="text/css">
+	<script type="text/javascript" th:src="@{/scripts/authority/commonAll.js}"></script>
+	<script type="text/javascript" th:src="@{/scripts/fancybox/jquery.fancybox-1.3.4.js}"></script>
+	<script type="text/javascript" th:src="@{/scripts/fancybox/jquery.fancybox-1.3.4.pack.js}"></script>
+	<link rel="stylesheet" type="text/css" th:href="@{/style/authority/jquery.fancybox-1.3.4.css}" media="screen">
+	<script type="text/javascript" th:src="@{/scripts/artDialog/artDialog.js?skin=default}"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+             * 提交
+             */
+			$("#submitbutton").click(function() {
+				if(validateForm()){
+					checkFyFhSubmit();
+				}
+			});
+
+			/*
+             * 取消
+             */
+            $(".cancelbutton").click(function() {
+                /**  关闭弹出iframe  **/
+//				window.$.fancybox.close();
+                $("#fancybox-wrap").hide();
+                $("#fancybox-overlay").hide()
+            });
+
+			var result = 'null';
+			if(result =='success'){
+				/**  关闭弹出iframe  **/
+				window.parent.$.fancybox.close();
+			}
+		});
+
+		/** 检测房源房号是否存在  **/
+		function checkFyFh(){
+			// 分别获取小区编号、栋号、层号、房号
+			var fyID = $('#fyID').val();
+			var fyXqCode = $("#fyXq").val();
+			var fyDh = $("#fyDh").val();
+			var fyCh = $("#fyCh").val();
+			var fyFh = $("#fyFh").val();
+			if(fyXqCode!="" && fyDh!="" && fyCh!="" && fyFh!=""){
+				// 给房屋坐落地址赋值
+				$("#fyZldz").val($('#fyDh option:selected').text() + fyCh + "-" + fyFh);
+				// 异步判断该房室是否存在，如果已存在，给用户已提示哦
+				$.ajax({
+					type:"POST",
+					url:"checkFyFhIsExists.action",
+					data:{"fangyuanEntity.fyID":fyID,"fangyuanEntity.fyXqCode":fyXqCode, "fangyuanEntity.fyDhCode":fyDh, "fangyuanEntity.fyCh":fyCh, "fangyuanEntity.fyFh":fyFh},
+					dataType : "text",
+					success:function(data){
+// 					alert(data);
+						// 如果返回数据不为空，更改“房源信息”
+						if(data=="1"){
+							art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'该房室在系统中已经存在哦，\n请维护其他房室数据', ok:true,});
+							$("#fyFh").css("background", "#EEE");
+							$("#fyFh").focus();
+							return false;
+						}
+					}
+				});
+			}
+		}
+
+		/** 检测房源房号是否存在并提交form  **/
+		function checkFyFhSubmit(){
+			// 分别获取小区编号、栋号、层号、房号
+			var fyID = $('#fyID').val();
+			var fyXqCode = $("#fyXq").val();
+			var fyDh = $("#fyDh").val();
+			var fyCh = $("#fyCh").val();
+			var fyFh = $("#fyFh").val();
+			if(fyXqCode!="" && fyDh!="" && fyCh!="" && fyFh!=""){
+				// 给房屋坐落地址赋值
+				$("#fyZldz").val($('#fyDh option:selected').text()  + fyCh + "-" + fyFh);
+				// 异步判断该房室是否存在，如果已存在，给用户已提示哦
+				$.ajax({
+					type:"POST",
+					url:"checkFyFhIsExists.action",
+					data:{"fangyuanEntity.fyID":fyID,"fangyuanEntity.fyXqCode":fyXqCode, "fangyuanEntity.fyDhCode":fyDh, "fangyuanEntity.fyCh":fyCh, "fangyuanEntity.fyFh":fyFh},
+					dataType : "text",
+					success:function(data){
+// 					alert(data);
+						// 如果返回数据不为空，更改“房源信息”
+						if(data=="1"){
+							art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'该房室在系统中已经存在哦，\n请维护其他房室数据', ok:true,});
+							$("#fyFh").css("background", "#EEE");
+							$("#fyFh").focus();
+							return false;
+						}else{
+							$("#submitForm").attr("action", "/xngzf/archives/saveOrUpdateFangyuan.action").submit();
+						}
+					}
+				});
+			}
+			return true;
+		}
+
+		/** 表单验证  **/
+		function validateForm(){
+			if($("#fyXqName").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源小区', ok:true,});
+				return false;
+			}
+			if($("#fyDh").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源栋号', ok:true,});
+				return false;
+			}
+			if($("#fyCh").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源层号', ok:true,});
+				return false;
+			}
+			if($("#fyFh").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源房号', ok:true,});
+				return false;
+			}
+			if($("#fyZongMj").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源面积', ok:true,});
+				return false;
+			}
+			if($("#fyJizuMj").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写计租面积', ok:true,});
+				return false;
+			}
+			if($("#fyZldz").val()==""){
+				art.dialog({icon:'error', title:'友情提示', drag:false, resize:false, content:'填写房源座落地址', ok:true,});
+				return false;
+			}
+			return true;
+		}
+	</script>
+</head>
+<style>
+	#page_close {
+		position: relative;
+		margin-top: 0;
+	}
+</style>
+<body>
+<form name="submitForm" action="/saveFieldElem" method="post">
+	<div id="container" style="width:800px;height: 400px">
+		<div id="nav_links"
+			当前位置：数据字段元素设置&nbsp;>&nbsp;<span style="color: #1A5CC6;">数据字段元素编辑</span>
+			<div id="page_close">
+				<a class="cancelbutton" href="javascript:;">
+					<img th:src="@{/images/common/page_close.png}" width="20" height="20" style="vertical-align: text-top;"/>
+				</a>
+			</div>
+		</div>
+		<div class="ui_content">
+			<table  cellspacing="0" cellpadding="0" width="100%" align="center" border="0">
+				<input type="hidden" name="mode" th:value="${mode}"   />
+				<tr>
+					<td class="ui_text_rt">交易模块名称</td>
+					<td class="ui_text_lt">
+						<select name="atomtypeid" id="atomtypeid" class="ui_select03" required >
+							<option value="">--请选择--</option>
+							<option  th:each="sysElem:${sysElemList}" th:value="${sysElem.atomtypeid}" th:text="${sysElem.atomtypename }" th:selected="${sysElem.atomtypeid} == ${ybtFieldElems.atomtypeid}"></option>
+
+						</select>
+					</td>
+					<td class="ui_text_rt">字段元素编号</td>
+					<td class="ui_text_lt">
+						<div th:switch="${mode}">
+						<input th:case="'add'" type="text" name="fieldid" id="fieldid" th:value="${ybtFieldElems.fieldid}" class="ui_input_txt02" required th:onblur="getById()" />
+							<input th:case="'edit'" type="text" name="fieldid" id="fieldid" th:value="${ybtFieldElems.fieldid}" class="ui_input_txt02" required readonly="readonly" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">字段中文名称</td>
+					<td class="ui_text_lt">
+						<input type="text" name="fieldcname" id="fieldcname" th:value="${ybtFieldElems.fieldcname}" class="ui_input_txt02" required  />
+					</td>
+					<td class="ui_text_rt">字段英文名称</td>
+					<td class="ui_text_lt">
+						<input type="text" name="fieldename" id="fieldename" th:value="${ybtFieldElems.fieldename}" class="ui_input_txt02" required  />
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">字段长度</td>
+					<td class="ui_text_lt">
+						<input type="text" name="fieldlength" id="fieldlength" th:value="${ybtFieldElems.fieldlength}" class="ui_input_txt02" />
+					</td>
+					<td class="ui_text_rt">是否固定长度</td>
+					<td class="ui_text_lt">
+						<select name="isfixlength" id="isfixlength" class="ui_select03" >
+							<option value="">--请选择--</option>
+							<option value="1" th:selected="${ybtFieldElems.isfixlength} == '1'">固定</option>
+							<option value="2" th:selected="${ybtFieldElems.isfixlength} == '2'">不固定</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">字段输入类型</td>
+					<td class="ui_text_lt">
+						<select name="fieldinputtype" id="fieldinputtype" class="ui_select03" >
+							<option value="">--请选择--</option>
+							<option value="1" th:selected="${ybtFieldElems.fieldinputtype} == '1'">单行输入框</option>
+							<option value="2" th:selected="${ybtFieldElems.fieldinputtype} == '2'">下拉框</option>
+							<option value="3" th:selected="${ybtFieldElems.fieldinputtype} == '3'">复选框</option>
+							<option value="4" th:selected="${ybtFieldElems.fieldinputtype} == '4'">文本输入框</option>
+							<option value="5" th:selected="${ybtFieldElems.fieldinputtype} == '5'">标签</option>
+						</select>
+					</td>
+					<td class="ui_text_rt">字段类型</td>
+					<td class="ui_text_lt">
+						<select name="fieldtype" id="fieldtype" class="ui_select03" >
+							<option value="" selected="selected">--请选择--</option>
+							<option value="1" th:selected="${ybtFieldElems.fieldtype} == '1'">字符</option>
+							<option value="2" th:selected="${ybtFieldElems.fieldtype} == '2'">数字</option>
+							<option value="3" th:selected="${ybtFieldElems.fieldtype} == '3'">日期字符</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="ui_text_rt">字段取值类型</td>
+					<td class="ui_text_lt">
+						<select name="fieldgettype" id="fieldgettype" class="ui_select03" >
+							<option value="" selected="selected">--请选择--</option>
+							<option value="1" th:selected="${ybtFieldElems.fieldgettype} == '1'">全行统一</option>
+							<option value="2" th:selected="${ybtFieldElems.fieldgettype} == '2'">各保险公司分别定义</option>
+						</select>
+					</td>
+					<td class="ui_text_rt">数值精度</td>
+					<td class="ui_text_lt">
+						<input type="text" name="precisionval" id="precisionval" th:value="${ybtFieldElems.precisionval}" class="ui_input_txt02" />
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td class="ui_text_lt">
+						&nbsp;<input   type="submit" value="提交"  class="ui_input_btn01"/>
+						&nbsp;<input id="cancelbutton" type="button" value="取消" class="ui_input_btn01 cancelbutton"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</form>
+
+<script>
+    function getById() {
+        //发ajax请求到后台判断交易模块编号是否存在;
+        var fieldid = $("#fieldid").val();
+        $.ajax({
+            type:'POST',
+            url:'/getById',
+            dataType : 'JSON',
+            data:{fieldid:fieldid},
+            success:function(data){
+                if(data==0){
+                    alert("对不起,该字段元素编号已存在,请重新输入！");
+                    $("#fieldid").val("");
+                    return;
+                }
+            }
+        });
+    }
+
+    /*function getByFieldcname() {
+        //发ajax请求到后台判断交易模块名称是否存在;
+        var fieldcname  = $("#fieldcname").val();
+        $.ajax({
+            type:'POST',
+            url:'/getByFieldcname',
+            dataType : 'JSON',
+            data:{fieldcname:fieldcname},
+            success:function(data){
+                if(data==0){
+                    alert("对不起,该字段中文名称已存在,请重新输入！");
+                    $("#fieldcname").val("");
+                    return;
+                }
+            }
+        });
+    }*/
+
+
+    function getByFieldename() {
+        //发ajax请求到后台判断交易模块名称是否存在;
+        var fieldename = $("#fieldename").val();
+        $.ajax({
+            type:'POST',
+            url:'/getByFieldename',
+            dataType : 'JSON',
+            data:{fieldename:fieldename},
+            success:function(data){
+                if(data==0){
+                    alert("对不起,该字段中文名称已存在,请重新输入！");
+                    $("#fieldename").val("");
+                    return;
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

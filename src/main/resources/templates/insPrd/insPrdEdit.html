@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>SCT-后台系统</title>
+
+    <link href="style/authority/common_style.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" type="text/css" href="style/wdatePicker/WdatePicker.css" />
+
+    <link href="style/authority/basic_layout.css" rel="stylesheet" type="text/css">
+
+    <link href="style/core/table.css" rel="stylesheet" type="text/css">
+
+
+    <link href="style/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap -->
+    <link href="style/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="style/bootstrap/prettify.css" rel="stylesheet">
+</head>
+<body>
+<div id="container">
+    <div id="rootwizard">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    <ul>
+                        <li><a href="#tab1" data-toggle="tab">基本信息设置</a></li>
+                        <li><a href="#tab2" data-toggle="tab">缴费年期设置</a></li>
+                        <li><a href="#tab3" data-toggle="tab">保险年期设置</a></li>
+                        <li><a href="#tab4" data-toggle="tab">手续费费率设置</a></li>
+                        <li><a href="#tab5" data-toggle="tab">投资账户设置</a></li>
+                        <li><a href="#tab6" data-toggle="tab">网销信息设置</a></li>
+                        <li><a href="#tab7" data-toggle="tab">网销文件设置</a></li>
+                        <li><a href="#tab8" data-toggle="tab">代理产品设置</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <ul class="pager wizard">
+            <li class="previous first" style="display:none;"><a href="#">First</a></li>
+            <li class="previous"><a href="#">上一步</a></li>
+            <li class="next last" style="display:none;"><a href="#">Last</a></li>
+            <li class="next"><a href="#">下一步</a></li>
+            <li class="finish"><a href="javascript:;">复核</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane" id="tab1">
+                <table  cellspacing="0" cellpadding="0" width="100%" align="left" border="0">
+
+                    <tr>
+                        <td class="ui_text_rt" width="15%" ><span style="color:#fc0000">*</span>产品中文名称：</td>
+                        <td class="ui_text_lt" width="80%" colspan="3">
+                            <input type="text" id="fyCh" name="fangyuanEntity.fyCh" value=""  class="ui_input_txt04"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt"><span style="color:#fc0000">*</span>产品中文简称：</td>
+                        <td class="ui_text_lt" colspan="2">
+                            <input type="text" id="inprdname" name="inprdname"  value="" class="ui_input_txt05" onkeyup="checkFyFh();"/>
+                        </td>
+                        <td class="ui_text_lt" ></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>总公司名称：</td>
+                        <td class="ui_text_lt" width="15%">
+                            <select name="bankcode" id="bankcode" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600">太平洋财险</option>
+                                <option value="0200">阳光人寿</option>
+                                <option value="9800">中国人寿</option>
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品编码：</td>
+                        <td class="ui_text_lt" width="65%">
+                            <input type="text" id="prdcode" name="prdcode"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>主附险标志：</td>
+                        <td class="ui_text_lt">
+                            <select name="zfx" id="zfx" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="">--请选择--</option>
+                                <option value="0600" selected="selected">主险</option>
+                                <option value="0200">附险</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>代理方式：</td>
+                        <td class="ui_text_lt">
+                            <select name="dlfx" id="dlfx" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="">--请选择--</option>
+                                <option value="0600" selected="selected">总对总</option>
+                                <option value="0200">分对分</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>所属产品库：</td>
+                        <td class="ui_text_lt">
+                            <select name="vv" id="vv" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >产品库001</option>
+                                <option value="0200">产品库002</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>保费计算方式：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="fyXq" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >总对总</option>
+                                <option value="0200">分对分</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品币种：</td>
+                        <td class="ui_text_lt">
+                            <select name="bb" id="bb" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >人民币</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%">产品利率：</td>
+                        <td class="ui_text_lt">
+                            <select name="nn" id="nn" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >15</option>
+                                <option value="0200">20</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">产品总金额：</td>
+                        <td class="ui_text_lt">
+                            <input type="text" id="mm" name="fangyuanEntity.fyFh"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                        <td class="ui_text_rt" width="15%">产品总份数：</td>
+                        <td class="ui_text_lt">
+                            <input type="text" id="jj" name="fangyuanEntity.fyFh"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品种类：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="ii" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >人民币</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品属性：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="uu" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >15</option>
+                                <option value="0200">20</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品投资类型：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="yy" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >人民币</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品质押：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="tt" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >15</option>
+                                <option value="0200">20</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品归属部门：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="rr" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >人民币</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品销售对象：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="ee" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >15</option>
+                                <option value="0200">20</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品风险级别：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="ww" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >人民币</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>是否允许超风险购买：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="qq" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600" >是</option>
+                                <option value="0200">否</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品启用状态：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="ss" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" >--请选择--</option>
+                                <option value="0600" >已启用</option>
+                                <option value="0600" selected="selected">未启用</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>产品发布状态：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.fyXqCode" id="pp" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" >--请选择--</option>
+                                <option value="0600" >已发布</option>
+                                <option value="0200" selected="selected">未发布</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>代理开始时间：</td>
+                        <td class="ui_text_lt">
+                            <div style="position: relative;width: 225px">
+                                <input type="text" id="agentBeginDate" placeholder="yyyy-mm-dd" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+                                <I class=time-icon></I>
+                            </div>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>代理结束时间：</td>
+                        <td class="ui_text_lt">
+                            <div style="position: relative;width: 225px">
+                                <input type="text" id="agentEndDate" placeholder="yyyy-mm-dd" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+                                <I class=time-icon></I>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt"><span style="color:#fc0000">*</span>交易方式：</td>
+                        <td class="ui_text_lt" colspan="3">
+                            <input type="text" id="fyPsdz" name="fangyuanEntity.fyPsdz" value="城中区" class="ui_input_txt02"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt"><span style="color:#fc0000">*</span>销售渠道：</td>
+                        <td class="ui_text_lt" colspan="3">
+                            <select name="fangyuanEntity.zulinXingzhi" id="submitForm_fangyuanEntity_zulinXingzhi" class="ui_select03">
+                                <option value="">--请选择--</option>
+                                <option value="40" selected="selected">公租房</option>
+                                <option value="41">廉租房</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>是否为投连险产品：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.zulinXingzhi" id="submitForm_fangyuanEntity_zulinXingzhi" class="ui_select03">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="40" selected="selected">否</option>
+                                <option value="41">是</option>
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%"><span style="color:#fc0000">*</span>是否为网销产品：</td>
+                        <td class="ui_text_lt">
+                            <select name="fangyuanEntity.zulinXingzhi" id="submitForm_fangyuanEntity_zulinXingzhi" class="ui_select03">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="40" >否</option>
+                                <option value="41">是</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">产品简介：</td>
+                        <td class="ui_text_lt" colspan="3" width="85%">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02"></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="tab2">
+
+                <table  class="" cellspacing="0" cellpadding="0" width="60%" align="center" border="0">
+                    <tr>
+                        <td class="ui_text_rt" width="20%">缴费年期类型：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <select name="payLimt" id="payLimt" class="ui_select03" onchange="payLimitChange()">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600">趸缴</option>
+                                <option value="0200">年缴</option>
+                                <option value="9800">缴至某确定年龄</option>
+                                <option value="0200">缴终身</option>
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="20%">缴费年期：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <input type="text" id="payLimtvalue" name="payLimtvalue"  value="" class="ui_input_txt02" onkeyup=""/>
+                        </td>
+                        <td width="20%">
+                            <input class="ui_input_btn01" type="button" id="but1" value=" 增 加 "/>
+                        </td>
+                    </tr>
+                </table>
+                <div align="center">
+                    <table id="tabP" border="0"  align="center"  class="mws-table" style="width: 60%">
+                        <thead>
+                        <th width="40%">缴费年期方式</th>
+                        <th width="40%"> 缴费年期 </th>
+                        <th width="40%"> 操作 </th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab3">
+                <table  class="" cellspacing="0" cellpadding="0" width="60%" align="center" border="0">
+
+                    <tr>
+                        <td class="ui_text_rt" width="20%">保险年期类型：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <select name="insuranceLimt" id="insuranceLimt" class="ui_select03" onchange="insuranceLimitChange()">
+                                <option value="" selected="selected">--请选择--</option>
+                                <option value="0600">趸缴</option>
+                                <option value="0200">年缴</option>
+                                <option value="9800">缴至某确定年龄</option>
+                                <option value="0200">缴终身</option>
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="20%">保险年期：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <input type="text" id="insuranceLimtvalue" name="insuranceLimtvalue"  value="" class="ui_input_txt02" onkeyup=""/>
+                        </td>
+                        <td width="20%">
+                            <input class="ui_input_btn01" type="button" id="but2" value=" 增 加 "/>
+                        </td>
+                    </tr>
+                </table>
+                <div align="center">
+                    <table id="tabI" border="0"  align="center"  class="mws-table" style="width: 60%">
+                        <thead>
+                        <th width="40%">保险年期方式</th>
+                        <th width="40%"> 保险年期 </th>
+                        <th width="40%"> 操作 </th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="tab4">
+                <table  class="" cellspacing="0" cellpadding="0" width="85%" align="center" border="0">
+
+                    <tr>
+                        <td class="ui_text_rt" width="16%">费率性质：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <select name="fl" id="fl" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="16%">管理行号：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <select name="glh" id="glh" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="16%">交易品种：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <select name="jypz" id="yjpz" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="16%">续缴结算期数：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <input type="text" id="jsqs" name="jsqs"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                        <td class="ui_text_rt" width="16%">收费方式：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <select name="glh" id="sffs" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="16%">一次性收费金额：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <input type="text" id="sfje" name="jsqs"  value="" class="ui_input_txt02" onkeyup=""/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="ui_text_rt" width="16%">扣款方式：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <select name="kkfs" id="kkfs" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="16%"></td>
+                        <td class="ui_text_lt" width="17%">
+                            <input class="ui_input_btn01" type="button" id="but3" value=" 查 询 "/>
+                        </td>
+                        <td class="ui_text_rt" width="16%"></td>
+                        <td class="ui_text_lt" width="17%">
+                            <input class="ui_input_btn01" type="button" id="but4" value=" 保 存 "/>
+                        </td>
+                    </tr>
+                </table>
+                <div align="center">
+                    <table id="tabRate" border="0"  align="center"  class="mws-table" style="width: 85%">
+                        <thead>
+                        <th width="15%">缴费年期类型</th>
+                        <th width="15%"> 缴费年期 </th>
+                        <th width="12%"> 保险年期类型 </th>
+                        <th width="10%"> 保险年期 </th>
+                        <th width="18%"> 百分比收费比例(%) </th>
+                        <th width="20%">综合保费折算系数</th>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="tab-pane" id="tab5">
+                <table  class="" cellspacing="0" cellpadding="0" width="60%" align="center" border="0">
+
+                    <tr>
+                        <td class="ui_text_rt" width="20%">投资账户名称：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <input type="text" id="tzzhname" name="tzzhname"  value="" class="ui_input_txt02" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_rt" width="20%">投资账户代码：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <input type="text" id="tzzhcode" name="tzzhcode"  value="" class="ui_input_txt02" onkeyup=""/>
+                        </td>
+                        <td width="20%">
+                            <input class="ui_input_btn01" type="button" id="butTz" value=" 增 加 "/>
+                        </td>
+                    </tr>
+                </table>
+                <div align="center">
+                    <table id="tabTz" border="0"  align="center"  class="mws-table" style="width: 60%">
+                        <thead>
+                        <th width="40%">投资账户名称</th>
+                        <th width="40%"> 投资账户代码 </th>
+                        <th width="40%"> 操作 </th>
+                        </thead>
+                    </table>
+                </div>
+                <br><br>
+                <table  class="" cellspacing="0" cellpadding="0" width="60%" align="center" border="0">
+                    <tr>
+                        <td class="ui_text_rt" width="20%">是否定投：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <input type="radio" id="radio1" name="rd1"  value="" class="radio" onkeyup=""/>
+                            <input type="radio" id="radio2" name="rd1"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_rt" width="20%"></td>
+                        <td class="ui_text_lt" width="20%">
+                            <input class="ui_input_btn01" type="button" id="butTz2" value=" 保 存 "/>
+                        </td>
+                        <td width="20%">
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="20%">定投频率：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <select name="kkfs" id="dtpl" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="20%">定投日期：</td>
+                        <td class="ui_text_lt" width="20%">
+                            <select name="kkfs" id="dtrq" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+                            </select>
+                        </td>
+                        <td width="20%">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane" id="tab6">
+                <table  cellspacing="0" cellpadding="0" width="90%" align="center" border="0" style="width: 90%">
+
+                    <tr>
+                        <td class="ui_text_rt" style="width: 120px"  >投保年龄：</td>
+                        <td class="ui_text_lt" style="width: 220px"  >
+                            <input type="text" id="0qfrom" name="fangyuanEntity.fyCh" value=""  class="ui_input_txt02"/>
+                        </td>
+                        <td class="ui_text_rt" align="center" width="20%">至</td>
+                        <td class="ui_text_lt" width="20%">
+                            <input type="text" id="0qto" name="fangyuanEntity.fyCh" value=""  class="ui_input_txt02"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">购买单位：</td>
+                        <td class="ui_text_lt" width="15%">
+                            <select name="bankcode" id="b2" class="ui_select03" onchange="getFyDhListByFyXqCode();">
+                                <option value="" selected="selected">--请选择--</option>
+                            </select>
+                        </td>
+                        <td class="ui_text_rt" width="15%">产品场景分类：</td>
+                        <td class="ui_text_lt" width="65%">
+                            <input type="text" id="b3" name="prdcode"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">起购金额：</td>
+                        <td class="ui_text_lt" width="15%">
+                            <input type="text" id="b3" name="prdcode"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                        <td class="ui_text_rt" width="15%">购买上限：</td>
+                        <td class="ui_text_lt" width="65%">
+                            <input type="text" id="b3" name="prdcode"  value="" class="ui_input_txt02" onkeyup="checkFyFh();"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">保障利益生效日：</td>
+                        <td class="ui_text_lt" width="25%" colspan="2">
+                            <div style="position: relative;width: 225px">
+                                <input type="text" id="bzsxDate" placeholder="yyyy-mm-dd" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" />
+                                <I class=time-icon></I>
+                            </div>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">投保人与被保人是否强制为同一人：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">受益人是否强制为法定：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否为借意险：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否有其它投保事项：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否为投连险产品：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">是否要提供投保财产地址：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否需要健康告知：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否对职业类别有限制：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否精选产品：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否健康险：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否为电子保单：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%" height="30px">是否可以保单贷款：</td>
+                        <td class="ui_text_lt" width="15%" colspan="2">
+                            &nbsp;&nbsp;是<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                            否<input type="radio"  name="rdx"  value="" class="radio" onkeyup=""/>
+                        </td>
+                        <td class="ui_text_lt" width="65%"></td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="ui_text_rt" width="15%">起购金额描述：</td>
+                        <td class="ui_text_lt" width="30%" colspan="3">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02" ></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">购买上限描述：</td>
+                        <td class="ui_text_lt" width="15%" colspan="3">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02" ></textarea>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">产品特色：</td>
+                        <td class="ui_text_lt" width="15%" colspan="3">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02" ></textarea>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">投保提示：</td>
+                        <td class="ui_text_lt" width="15%" colspan="3">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02" ></textarea>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">投保声明：</td>
+                        <td class="ui_text_lt" width="15%" colspan="3">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02" ></textarea>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="15%">保单配送方式：</td>
+                        <td class="ui_text_lt" width="15%" colspan="3">
+                            <textarea id="hh" name="fxxx"  value =" " class="ui_area02" ></textarea>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="tab-pane" id="tab7">
+                <table  class="" cellspacing="0" cellpadding="0" width="85%" align="center" border="0">
+                    <tr>
+                        <td class="ui_text_rt" width="16%">销售渠道：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <input type="checkbox" id="ck1">  网银
+                            <input type="checkbox" id="ck1">  手机
+                        </td>
+                        <td class="ui_text_rt" width="16%">文件类型：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <select name="glh" id="glh" class="ui_select03" onchange="">
+                                <option value="" selected="selected">--请选择--</option>
+
+                            </select>
+                        </td>
+
+                        <td class="ui_text_rt" width="16%">上传文件名：：</td>
+                        <td class="ui_text_lt" width="17%">
+                            <DIV class="kv-item-content file" sizset="0" >
+                                <SPAN class=text></SPAN>
+                                <INPUT type=file >
+                                <!--<INPUT class="button normal long2" value='浏览..' type=button>-->
+                            </DIV>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="ui_text_rt" width="16%">&nbsp;</td>
+                        <td class="ui_text_lt" width="17%">
+
+                        </td>
+                        <td class="ui_text_rt" width="16%"></td>
+                        <td class="ui_text_lt" width="17%">
+
+                        </td>
+
+                        <td class="ui_text_rt" width="16%"></td>
+                        <td class="ui_text_lt" width="17%">
+
+                        </td>
+                    </tr>
+                </table>
+                <table id="tabUp" border="0"  align="center"  class="mws-table" style="width: 85%">
+                    <thead>
+                    <th width="10%">序号</th>
+                    <th width="12%"> 销售渠道 </th>
+                    <th width="12%"> 文件类型 </th>
+                    <th width="22%"> 文件名称 </th>
+                    <th width="12%"> 操作柜员 </th>
+                    <th width="12%"> 操作日期 </th>
+                    <th width="10%"> 全部下载 </th>
+                    <th width="10%"> 全部删除 </th>
+                    </thead>
+                </table>
+
+            </div>
+            <div class="tab-pane" id="tab8">
+                <div class="zTreeDemoBackground left">
+                    <ul id="treeDemo" class="ztree"></ul>
+                </div>
+            </div>
+            <ul class="pager wizard">
+                <li class="previous first" style="display:none;"><a href="#">First</a></li>
+                <li class="previous"><a href="#">上一步</a></li>
+                <li class="next last" style="display:none;"><a href="#">Last</a></li>
+                <li class="next"><a href="#">下一步</a></li>
+                <li class="finish"><a href="javascript:;">复核</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--<script type="text/javascript" src="scripts/jquery/jquery-1.4.4.min.js"></script>-->
+<script src="scripts/jquery/jquery-latest.js"></script>
+<script type="text/javascript" src="scripts/zTree/jquery.ztree.core.js"></script>
+<script type="text/javascript" src="scripts/zTree/jquery.ztree.excheck.js"></script>
+
+<script src="scripts/bootstrap/bootstrap.min.js"></script>
+<script src="scripts/jquery.bootstrap.wizard.js"></script>
+<script src="scripts/prettify.js"></script>
+<script src="scripts/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+
+
+
+
+<script>
+    function payLimitChange(){
+        if ($("#payLimt").find("option:selected").text()=="趸缴")  {
+            $("#payLimtvalue").val('趸缴');
+            $("#payLimtvalue").attr("disabled","disabled");
+        }   else if ($("#payLimt").find("option:selected").text()=="缴终身")  {
+            $("#payLimtvalue").val('缴终身');
+            $("#payLimtvalue").attr("disabled","disabled");
+        } else {
+            $("#payLimtvalue").val('');
+            $("#payLimtvalue").removeAttr("disabled");
+        }
+    }
+
+    function insuranceLimitChange(){
+        if ($("#insuranceLimt").find("option:selected").text()=="趸缴")  {
+            $("#insuranceLimtvalue").val('趸缴');
+            $("#insuranceLimtvalue").attr("disabled","disabled");
+        }   else if ($("#insuranceLimt").find("option:selected").text()=="缴终身")  {
+            $("#insuranceLimtvalue").val('缴终身');
+            $("#insuranceLimtvalue").attr("disabled","disabled");
+        } else {
+            $("#insuranceLimtvalue").val('');
+            $("#insuranceLimtvalue").removeAttr("disabled");
+        }
+    }
+
+    var flgP=true;
+    var flgI=true;
+    $(document).ready(function(){
+        //<tr/>居中
+        $( "#tabP tr").attr("align","center");
+        //增加<tr/>
+        $("#but1").click(function(){
+            flgP = true;
+            var _len = $( "#tabP tr").length;
+            if ($("#payLimtvalue").val()==null || $("#payLimtvalue").val()=="") {
+                flgP=false;
+                return false;
+            }
+
+            $('#tabP tr').each(function(i){                   // 遍历 tr
+                $(this).children('td').each(function(j){  // 遍历 tr 的各个 td
+                    if ($("#payLimt").find("option:selected").text()==$(this).text())  {
+                        if ($.trim($("#payLimtvalue").val())==$.trim($(this).next().text()))  {
+                            flgP=false;
+                        }
+                    }
+                    // alert($("#payLimt").find("option:selected").text() +"----" +$("#payLimtvalue").val());
+                    // alert("第"+(i+1)+"行，第"+(j+1)+"个td的值："+$(this).text()+"");
+                });
+            });
+            if (flgP) {//已有相同缴费方式和值不添加
+                if (_len%2>0) {
+                    $("#tabP").append("<tr id="+_len+" align='center' class='gradeA even'>"
+                        +"<td>"+$("#payLimt").find("option:selected").text()+"</td>"
+                        +"<td>"+$("#payLimtvalue").val()+"</td>"
+                        +"<td><a href=\'#\' onclick=\'deltr("+_len+")\'>删除</a></td>"
+                        +"</tr>");
+                } else {
+                    $("#tabP").append("<tr id="+_len+" align='center' class='gradeA odd'>"
+                        +"<td>"+$("#payLimt").find("option:selected").text()+"</td>"
+                        +"<td>"+$("#payLimtvalue").val()+"</td>"
+                        +"<td><a href=\'#\' onclick=\'deltr("+_len+")\'>删除</a></td>"
+                        +"</tr>");
+                }
+            }
+        })
+
+        //<tr/>居中
+        $( "#tabI tr").attr("align","center");
+        //增加<tr/>
+        $("#but2").click(function(){
+            flgI = true;
+            var _len = $( "#tabI tr").length;
+            if ($("#insuranceLimtvalue").val()==null || $("#insuranceLimtvalue").val()=="") {
+                flgI=false;
+                return false;
+            }
+
+            $('#tabI tr').each(function(i){                   // 遍历 tr
+                $(this).children('td').each(function(j){  // 遍历 tr 的各个 td
+                    if ($("#insuranceLimt").find("option:selected").text()==$(this).text())  {
+                        if ($.trim($("#insuranceLimtvalue").val())==$.trim($(this).next().text()))  {
+                            flgI=false;
+                        }
+                    }
+                    // alert($("#insuranceLimt").find("option:selected").text() +"----" +$("#insuranceLimtvalue").val());
+                    // alert("第"+(i+1)+"行，第"+(j+1)+"个td的值："+$(this).text()+"");
+                });
+            });
+            if (flgI) {//已有相同保障方式和值不添加
+                if (_len%2>0) {
+                    $("#tabI").append("<tr id="+_len+" align='center' class='gradeA even'>"
+                        +"<td>"+$("#insuranceLimt").find("option:selected").text()+"</td>"
+                        +"<td>"+$("#insuranceLimtvalue").val()+"</td>"
+                        +"<td><a href=\'#\' onclick=\'deltr("+_len+")\'>删除</a></td>"
+                        +"</tr>");
+                } else {
+                    $("#tabI").append("<tr id="+_len+" align='center' class='gradeA odd'>"
+                        +"<td>"+$("#insuranceLimt").find("option:selected").text()+"</td>"
+                        +"<td>"+$("#insuranceLimtvalue").val()+"</td>"
+                        +"<td><a href=\'#\' onclick=\'deltr("+_len+")\'>删除</a></td>"
+                        +"</tr>");
+                }
+            }
+
+
+        })
+
+
+
+
+
+
+
+    })
+
+    //删除<tr/>
+    var deltr =function(index)
+    {
+        var _len = $( "#tabP tr").length;
+        $("tr[id='"+index+"']").remove();//删除当前行
+        // for(var i=index+1,j=_len;i<j;i++)
+        // {
+        //     var nextTxtVal = $("#desc"+i).val();
+        //     $("tr[id=\'"+i+"\']")
+        //         .replaceWith("<tr id="+(i-1)+" align='center'>"
+        //             +"<td>"+(i-1)+"</td>"
+        //             +"<td>Dynamic TR"+(i-1)+"</td>"
+        //             +"<td><input type='text' name='desc"+(i-1)+"' value='"+nextTxtVal+"' id='desc"+(i-1)+"'/></td>"
+        //             +"<td><a href=\'#\' onclick=\'deltr("+(i-1)+")\'>删除</a></td>"
+        //             +"</tr>");
+        // }
+
+    }
+
+    $(document).ready(function() {
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+        // $("#nocheckTrue").bind("click", {nocheck: true}, nocheckNode);
+        // $("#nocheckFalse").bind("click", {nocheck: false}, nocheckNode);
+
+        $('#rootwizard').bootstrapWizard({onTabClick: function(tab, navigation, index,id) {
+                //tab只允许点已配置的环节
+                var $current = index+1;
+                if (index < id) {
+                    return false;
+                } else {
+                    return true;
+                }
+            },onNext: function(tab, navigation, index) {
+                if (index==3) {//手续费率设置tab进入更新表格内容
+                    var _len = $( "#tabRate tr").length;
+                    $("#tabRate").append("<tr id="+_len+" align='center' class='gradeA even'>"
+                        +"<td>"+12+"</td>"
+                        +"<td>"+12+"</td>"
+                        +"<td>"+13+"</td>"
+                        +"<td>24</td>"
+                        +"<td>25</td>"
+                        +"<td>26</td>"
+                        +"</tr>");
+                }
+            }
+        });
+
+        // $('#rootwizard').bootstrapWizard({onNext: function(tab, navigation, index,id) {
+        //         alert(id);
+        //         if (id==3) {
+        //             var _len = $( "#tabRate tr").length;
+        //             $("#tabRate").append("<tr id="+_len+" align='center' class='gradeA even'>"
+        //                 +"<td>"+12+"</td>"ztree
+        //                 +"<td>"+13+"</td>"
+        //                 +"<td>24</td>"
+        //                 +"<td>25</td>"
+        //                 +"<td>26</td>"
+        //                 +"</tr>");
+        //         }
+        //     }});
+
+        window.prettyPrint && prettyPrint()
+    });
+    $(document).ready(function() {
+        $('#rootwizard').bootstrapWizard({onTabShow: function(tab, navigation, index) {
+                var $total = navigation.find('li').length;
+                var $current = index+1;
+                var $percent = ($current/$total) * 100;
+                $('#rootwizard .progress-bar').css({width:$percent+'%'});
+            }});
+        $('#rootwizard .finish').click(function() {
+            alert('Finished!, Starting over!');
+            //$('#rootwizard').find("a[href*='tab1']").trigger('click');
+        });
+        window.prettyPrint && prettyPrint()
+    });
+
+
+
+    var setting = {
+        check: {
+            enable: true,
+            nocheckInherit: true
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        }
+    };
+
+    var zNodes =[
+        { id:1, pId:0, name:"总行 1", open:true},
+        { id:11, pId:1, name:"上海分行 1-1", open:true},
+        { id:111, pId:11, name:"徐汇支行 checkbox 1-1-1", nocheck:true},
+        { id:112, pId:11, name:"瑞金网点 1-1-2"},
+        { id:12, pId:1, name:"北京分行 checkbox 1-2", nocheck:true, open:true},
+        { id:121, pId:12, name:"五环第一网点 checkbox 1-2-1"},
+        { id:122, pId:12, name:"紫竹院支行 checkbox 1-2-2"},
+        { id:123, pId:12, name:"西环网点 checkbox 1-2-3"},
+        { id:124, pId:12, name:"北环网点 checkbox 1-2-4"}
+    ];
+
+    function nocheckNode(e) {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+            nocheck = e.data.nocheck,
+            nodes = zTree.getSelectedNodes();
+        if (nodes.length == 0) {
+            alert("请先选择一个节点");
+        }
+
+        for (var i=0, l=nodes.length; i<l; i++) {
+            nodes[i].nocheck = nocheck;
+            zTree.updateNode(nodes[i]);
+        }
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

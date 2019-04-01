@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topcheer.spdbybt.mapper.YbtFieldElemsMapper" >
+  <resultMap id="BaseResultMap" type="com.topcheer.spdbybt.entity.YbtFieldElems" >
+    <id column="fieldId" property="fieldid" jdbcType="VARCHAR" />
+    <result column="fieldCName" property="fieldcname" jdbcType="VARCHAR" />
+    <result column="fieldEName" property="fieldename" jdbcType="VARCHAR" />
+    <result column="fieldInputType" property="fieldinputtype" jdbcType="CHAR" />
+    <result column="atomTypeId" property="atomtypeid" jdbcType="CHAR" />
+    <result column="operatorBankCode" property="operatorbankcode" jdbcType="VARCHAR" />
+    <result column="operatorCode" property="operatorcode" jdbcType="VARCHAR" />
+    <result column="updateDate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yfe.fieldId fieldid,
+    yfe.fieldCName fieldcname,
+    yfe.fieldEName fieldename,
+    yfe.fieldInputType fieldinputtype,
+    yfe.fieldType fieldtype,
+    yfe.fieldGetType fieldgettype,
+    yfe.isFixLength isfixlength,
+    yfe.precisionVal precisionval,
+    yfe.fieldLength fieldlength,
+    yfe.atomTypeId atomtypeid,
+    yfe.operatorBankCode operatorbankcode,
+    yfe.operatorCode operatorcode,
+    yfe.updateDate updatedate,
+    yfe.updateTime updatetime,
+    yfe.remark1 remark1,
+    yfe.remark2 remark2,
+    yfe.remark3 remark3,
+    yfe.remark4 remark4,
+    yfe.remark5 remark5
+  </sql>
+
+  <sql id="SQL_FIELD_WHERE">
+    <if test="atomtypeid != null and atomtypeid.length() != 0">
+      AND  yfe.atomTypeId = #{atomtypeid}
+    </if>
+    <if test="fieldcname != null and fieldcname.length() != 0">
+      AND yfe.fieldCName like '%${fieldcname}%'
+    </if>
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultType="com.topcheer.spdbybt.entity.YbtFieldElems" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from ybt_fieldelems yfe
+    where yfe.fieldId = #{fieldid,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from ybt_fieldelems
+    where fieldId = #{fieldid,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insertSelective" parameterType="com.topcheer.spdbybt.entity.YbtFieldElems" >
+    insert into ybt_fieldelems
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fieldid != null" >
+        fieldId,
+      </if>
+      <if test="fieldcname != null" >
+        fieldCName,
+      </if>
+      <if test="fieldename != null" >
+        fieldEName,
+      </if>
+      <if test="fieldinputtype != null" >
+        fieldInputType,
+      </if>
+      <if test="atomtypeid != null" >
+        atomTypeId,
+      </if>
+      <if test="operatorbankcode != null" >
+        operatorBankCode,
+      </if>
+      <if test="operatorcode != null" >
+        operatorCode,
+      </if>
+      <if test="fieldgettype != null" >
+        fieldGetType,
+      </if>
+      <if test="fieldtype != null" >
+        fieldType,
+      </if>
+      <if test="isfixlength != null" >
+        isFixLength,
+      </if>
+      <if test="fieldlength != null" >
+        fieldLength,
+      </if>
+      <if test="precisionval != null" >
+        precisionVal,
+      </if>
+      <if test="updatedate != null" >
+        updateDate,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fieldid != null" >
+        #{fieldid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldcname != null" >
+        #{fieldcname,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldename != null" >
+        #{fieldename,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldinputtype != null" >
+        #{fieldinputtype,jdbcType=VARCHAR},
+      </if>
+      <if test="atomtypeid != null" >
+        #{atomtypeid,jdbcType=CHAR},
+      </if>
+      <if test="operatorbankcode != null" >
+        #{operatorbankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorcode != null" >
+        #{operatorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldgettype != null" >
+        #{fieldgettype,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldtype != null" >
+        #{fieldtype,jdbcType=VARCHAR},
+      </if>
+      <if test="isfixlength != null" >
+        #{isfixlength,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldlength != null" >
+        #{fieldlength,jdbcType=VARCHAR},
+      </if>
+      <if test="precisionval != null" >
+        #{precisionval,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.topcheer.spdbybt.entity.YbtFieldElems" >
+    update ybt_fieldelems
+    <set >
+      <if test="fieldcname != null" >
+        fieldCName = #{fieldcname,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldename != null" >
+        fieldEName = #{fieldename,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldinputtype != null" >
+        fieldInputType = #{fieldinputtype,jdbcType=VARCHAR},
+      </if>
+      <if test="atomtypeid != null" >
+        atomTypeId = #{atomtypeid,jdbcType=CHAR},
+      </if>
+      <if test="operatorbankcode != null" >
+        operatorBankCode = #{operatorbankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorcode != null" >
+        operatorCode = #{operatorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldgettype != null" >
+        fieldGetType = #{fieldgettype,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldtype != null" >
+        fieldType = #{fieldtype,jdbcType=VARCHAR},
+      </if>
+      <if test="isfixlength != null" >
+        isFixLength = #{isfixlength,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldlength != null" >
+        fieldLength = #{fieldlength,jdbcType=VARCHAR},
+      </if>
+      <if test="precisionval != null" >
+        precisionVal = #{precisionval,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        updateDate = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where fieldId = #{fieldid,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询所有的字段元素信息 -->
+  <select id="getFieldElemList" resultType="com.topcheer.spdbybt.entity.YbtFieldElems" parameterType="com.topcheer.spdbybt.entity.YbtFieldElems">
+
+    select  <include refid="Base_Column_List" />,
+    case when yfe.fieldInputType = '1' then '单行输入框'
+         when yfe.fieldInputType = '2' then '下拉框'
+         when yfe.fieldInputType = '3' then '复选框'
+         when yfe.fieldInputType = '4' then '文本输入框'
+         when yfe.fieldInputType = '5' then '标签' end AS fieldinputtypename,
+    case  when yfe.fieldType = '1' then '字符'
+          when yfe.fieldType = '2' then '数字'
+          when yfe.fieldType = '3' then '日期字符' end AS fieldtypename,
+    case  when yfe.fieldGetType = '1' then '全行统一'
+          when yfe.fieldGetType = '2' then '各保险公司分别定义' end AS fieldgettypename,
+    case  when yfe.isFixLength  = '1' then '固定'
+          when yfe.isFixLength  = '2' then '不固定' end AS isfixlengthname,
+    yme.atomTypeName atomtypename
+    from ybt_fieldelems yfe left join ybt_moduleelems yme on yfe.atomTypeId = yme.atomTypeId
+    <where>
+      <include  refid="SQL_FIELD_WHERE"/>
+    </where>
+  </select>
+
+
+  <!--根据字段中文名称查询-->
+  <select id="selectByFieldcname" resultType="com.topcheer.spdbybt.entity.YbtFieldElems" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from ybt_fieldelems yfe where yfe.fieldCName = #{fieldcname,jdbcType=VARCHAR}
+  </select>
+
+  <!--根据字段英文名称查询-->
+  <select id="selectByFieldename" resultType="com.topcheer.spdbybt.entity.YbtFieldElems" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from ybt_fieldelems yfe where yfe.fieldEName = #{fieldename,jdbcType=VARCHAR}
+  </select>
+
+  <select id="getByInputType" resultType="com.topcheer.spdbybt.entity.YbtFieldElems" >
+    select
+    <include refid="Base_Column_List" />
+    from ybt_fieldelems yfe where yfe.fieldInputType='2'
+  </select>
+
+</mapper>

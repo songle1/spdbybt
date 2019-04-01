@@ -1,0 +1,674 @@
+<!DOCTYPE html >
+<html >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> 上海浦东发展银行银保通系统 - 登录</title>
+
+</head>
+
+<body bgcolor="#ffffff" topmargin="0" leftmargin="0">
+
+
+
+
+
+
+
+<style media='print'>
+    .Noprint{display:none;}
+    .PageNext{page-break-after: always;}
+</style>
+<div class="Noprint">
+    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="993"  align="center">
+        <tr>
+            <td width="800"><TABLE cellSpacing=0 cellPadding=0 width=765 border=0>
+                <TBODY>
+                <TR>
+                    <TD vAlign=top align=left width=765>
+                        <TABLE cellSpacing=0 cellPadding=0 width=765 border=0>
+                            <TBODY>
+                            <TR vAlign=top align=left>
+                                <TD width=200><IMG height=55 src="/images/h11.jpg" width=200
+                                                   border=0></TD>
+                                <TD width=193><IMG height=55 src="/images/h12.jpg" width=193
+                                                   border=0></TD>
+                                <TD align=right width=372><BR><IMG height=32
+                                                                   src="/images/logbar.gif" width=226
+                                                                   border=0></TD></TR></TBODY></TABLE></TD></TR>
+                <TR>
+                    <TD vAlign=top align=left width=765>
+                        <TABLE cellSpacing=0 cellPadding=0 width=765 border=0>
+                            <TBODY>
+                            <TR vAlign=top align=left>
+                                <TD width=200><IMG height=57 src="/images/h21.jpg" width=200
+                                                   border=0></TD>
+                                <TD width=193><IMG height=57 src="/images/h221.jpg" width=193
+                                                   border=0></TD>
+                                <TD width=109><IMG height=57 src="/images/h23.gif" width=109
+                                                   border=0></TD>
+                                <TD width=263><IMG height=57 src="/images/h24.gif" width=263
+                                                   border=0></TD></TR></TBODY></TABLE></TD></TR>
+                </TBODY>
+            </TABLE></td>
+            <td width="200">
+
+            </td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="993"  align="center">
+    <tr>
+        <td width="100%"  align="left" valign="top">
+
+            <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%"  bgcolor="#ffffff">
+                <tr>
+                    <td width="1%" height="1" bgcolor="#5175C9">&nbsp;</td>
+                    <td width="98%" height="1" bgcolor="#5175C9">
+                        <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2" height="13">
+                            <tr>
+                                <td width="3%" height="13"></td>
+                                <td width="95%">
+
+
+                                    <div class="Noprint">
+                                        <table border="0" cellspacing="0" cellpadding="0" height="10" id="xx">
+                                            <tr height="15"><td></td></tr>
+
+                                        </table>
+                                    </div>
+
+
+                                </td>
+                                <td width="2%">&nbsp;</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="1%" height="1" bgcolor="#5175C9">
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1%" height="395" bgcolor="#5175C9"></td>
+                    <td width="98%" height="395" align="left" valign="top">
+
+
+
+                        <script language="javascript">
+
+                            function noDragenter() {
+                                return false;
+                            }
+
+                            //???????? eg. onpaste="return nopaste();"
+                            function noPaste() {
+                                return !clipboardData.getData('text').match(/\D/);
+                            }
+
+                            //???????????????????? eg. onkeypress="return noletter();"
+                            function noLetter() {
+                                return event.keyCode >= 48 && event.keyCode <= 57 || event.keyCode == 46;
+                            }
+
+                            //???????????? eg. onkeypress="return onlyDigit();"
+                            function onlyDigit() {
+                                return event.keyCode >= 48 && event.keyCode <= 57;
+                            }
+
+                            function isInt (value) {
+                                if (Math.ceil(value) != value) {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            }
+
+                            function alertMessage(element, message) {
+                                if (message !== '') {
+                                    alert(message);
+                                }
+                                if(typeof element == 'string') {
+                                    eval(element + '.select();');
+                                } else {
+                                    element.select();
+                                }
+                            }
+
+                            //????????????????
+                            //element:??????????????
+                            //message:????????
+                            function checkInt(element, message) {
+                                var elementValue = eval(element + '.value');
+                                if (!isInt(elementValue)) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //??????????????????
+                            //element:??????????????
+                            //message:????????
+                            function checkFloat(element, message) {
+                                var elementValue = eval(element + '.value');
+                                if (isNaN(elementValue) || isInt(elementValue)) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //??????????????????
+                            //element:??????????????
+                            //message:????????
+                            function checkIntOrFloat(element, message) {
+                                var elementValue = eval(element + '.value');
+                                if (isNaN(elementValue)) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //????????????
+                            //message:????????
+                            function checkDel(message) {
+                                return confirm(message);
+                            }
+
+                            //??????????????
+                            //element:??????????????
+                            //message:????????
+                            function checkBlank(element, message) {
+                                var reSpaceCheck = /^\s*$/;
+                                if (reSpaceCheck.test(eval(element+".value"))) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            function checkBlank2(element, message) {
+                                var reSpaceCheck = /^\s*$/;
+                                if (reSpaceCheck.test(eval(element+".value"))) {
+                                    if (message !== '') {
+                                        alert(message);
+                                    }
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //??????????????ip
+                            //element:??????????????
+                            //message:????????
+                            function checkIP(element, message) {
+                                var reSpaceCheck = /^\s*$/;
+                                var ipCheck = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+                                var elementValue =  eval(element + '.value');
+                                if (!reSpaceCheck.test(elementValue) && !ipCheck.test(elementValue)) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //??????????????email
+                            //element:??????????????
+                            //message:????????
+                            function checkEmail(element, message) {
+                                var reSpaceCheck = /^\s*$/;
+                                var emailCheck = /[_a-zA-Z\d\-\.]+@[_a-zA-Z\d\-]+(\.[_a-zA-Z\d\-]+)+$/;
+                                var elementValue =  eval(element + '.value');
+                                if (!reSpaceCheck.test(elementValue) && !emailCheck.test(elementValue)) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //检查输入项是否浮点数
+                            //element:
+                            //message:
+                            function checkNumberFloat(element) {
+                                var floatCheck = /^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$/;
+                                var elementValue =  eval(element + '.value');
+                                if ( !floatCheck.test(elementValue) ) {
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //检查输入项是否整数
+                            //element:
+                            //message:
+                            function checkNumber(element) {
+                                var numberCheck = /^-?[1-9]\d*$/;
+                                var elementValue =  eval(element + '.value');
+                                if ( !numberCheck.test(elementValue)) {
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //??????????????????????????????
+                            //element:??????????????
+                            //min:????????,-1????????????
+                            //max:????????,-1????????????
+                            //message:????????
+                            function checkStrRange(element, min, max, message) {
+                                if(typeof element == "string"){
+                                    element = eval(element);
+                                }
+
+                                if (min > max) {
+                                    alert("?输入错误,最小值min不能超过最大值max????");
+                                    return false;
+                                }
+                                var v = element.value;//eval(element + '.value');
+                                var length = getByteLength(v);
+                                //alert("v="+v+":length="+length+":min="+min+":max="+max);
+                                if (min >= 0 && length < min) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                if (max >= 0 && length > max) {
+                                    alertMessage(element, message);
+                                    return false;
+                                }
+                                return true;
+                            }
+
+                            //??????????????????????????????
+                            //element:??????????????
+                            //max:????????
+                            function checkChLength(element, max) {
+                                return checkStrRange(element,-1,max,"输入的长度超过系统规定的长度:"+max);
+                            }
+
+                            function checkChLength(element, max,msg) {
+                                return checkStrRange(element,-1,max,msg);
+                            }
+
+                            //??????????????gb2312????????????????
+                            function getByteLength(v) {
+                                if (!v) {
+                                    return 0;
+                                }
+                                var size = 0;
+                                for (var i = 0; i < v.length; i++) {
+                                    var c = v.charCodeAt(i);
+                                    if (c < 128) {
+                                        size += 1;
+                                    } else {
+                                        size += 2;
+                                    }
+                                }
+                                return size;
+                            }
+
+
+
+
+
+                            //????????????????
+                            //element:??????????????
+                            function checkDate(element) {
+                                var reSpaceCheck = /^\s*$/;
+                                var value =  eval(element + '.value');
+                                if (!reSpaceCheck.test(value)) {
+                                    if (value.length != 8) {
+                                        alertMessage(element, '????(' + value + ')??????');
+                                        return false;
+                                    }
+                                    var newValue = value.substring(0, 4) + '/' + value.substring(4, 6) + '/' + value.substring(6, 8);
+                                    var varDate = new Date(newValue);
+                                    var y = varDate.getFullYear();
+                                    var m = varDate.getMonth() + 1;
+                                    if (m < 10) {
+                                        m = '0' + m;
+                                    }
+                                    var d = varDate.getDate();
+                                    if (d < 10) {
+                                        d = '0' + d;
+                                    }
+                                    var checkValue = y + '/' + m + '/' + d;
+                                    if (checkValue != newValue) {
+                                        alertMessage(element, '????(' + value + ')??????');
+                                        return false;
+                                    }
+                                }
+                                return true;
+                            }
+
+                            //??????????????????????????????
+                            //element:??????????????
+                            //message:????????
+                            function checkLetter(element, message) {
+                                var elementValue =  eval(element + '.value');
+                                var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                                for (var i = 0; i < elementValue.length; i++) {
+                                    var checkChar = elementValue.charAt(i);
+                                    checkChar = checkChar.toUpperCase();
+                                    if (letters.indexOf(checkChar) == -1) {
+                                        alertMessage(element, message);
+                                        return false;
+                                    }
+                                }
+                                return true;
+                            }
+
+                            //????????????????????????????????????????
+                            //element:??????????????
+                            //values:??????????????
+                            function isSpecifiedValues(element, values) {
+                                var elementValue =  eval(element + '.value');
+                                for (var i in values) {
+                                    if (elementValue == values[i]) {
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+                            //????????????????????????????????????????????
+                            //element:??????????????
+                            //values:??????????????
+                            function hasSpecifiedValues(element, values) {
+                                var elementValue =  eval(element + '.value');
+                                for (var i in values) {
+                                    if (elementValue.indexOf(values[i]) != -1) {
+                                        return true;
+                                    }
+                                }
+                                return false;
+                            }
+
+                            //????????
+                            //str:??????
+                            function trim(str) {
+                                return str.replace(/(^\s*)|(\s*$)/g, "");
+                            }
+
+                            //??????????
+                            //str:??????
+                            function ltrim(str) {
+                                return str.replace(/(^\s*)/g, "");
+                            }
+
+                            //??????????
+                            //str:??????
+                            function rtrim(str) {
+                                return str.replace(/(\s*$)/g, "");
+                            }
+
+                            //????checkbox????????????????|????
+                            //checkObj:????checkbox????
+                            function getCheckBoxValue(checkObj) {
+                                var checkValue = "";
+                                if (checkObj.length > 1) {
+                                    for (var i = 0; i < checkObj.length; i++) {
+                                        if (checkObj[i].checked) {
+                                            checkValue = checkValue + checkObj[i].value + "|";
+                                        }
+                                    }
+                                } else {
+                                    checkValue = checkObj.value;
+                                }
+                                return checkValue;
+                            }
+                            //????????????
+                            function getEncrypt(form , url)
+                            {
+
+                                var sFeatures = "dialogHeight: 400px; dialogWidth: 500px; edge: Sunken; center: Yes; help: No; resizable: No; status: No;";
+                                var sPath = window.location.href;
+                                var leng = sPath.length;
+                                var count = 0;
+                                var sTmp = "";
+
+                                for ( var i = 0; i < leng; i ++ )
+                                {
+                                    if ( sPath.substring ( i, i + 1 ) == "/" )
+                                        count ++ ;
+
+                                    if ( count == 4 )
+                                    {
+                                        sTmp = sPath.substring ( 0, i );
+                                        break;
+                                    }
+                                }
+
+                                sPath = sTmp + "/basicInfoManage/getEncrypt.html";
+
+                                var ret = window.showModalDialog ( sPath, "ffff", sFeatures );
+                                if ( ret[4] != "checkbutton" )
+                                {
+                                    event.returnValue = false;
+                                }
+
+                                if ( ret[0] != null && ret[0] != "" )
+                                {
+                                    form.ZHANGH.value = ret[0];
+                                }
+                                if ( ret[1] != null && ret[1] != "" )
+                                {
+                                    form.JIOYMM.value = ret[1];
+                                }
+                                if ( form.value2 != null && ret[2] != null && ret[2] != "" )
+                                {
+                                    form.value2.value = ret[2];
+                                }
+                                if (  form.value3 != null && ret[3] != null && ret[3] != "" )
+                                {
+                                    form.value3.value = ret[3];
+                                }
+                            }
+
+                            function getEncryptTest(form,uPath)
+                            {
+                                var sFeatures = "dialogHeight: 400px; dialogWidth: 500px; edge: Sunken; center: Yes; help: No; resizable: No; status: No;";
+                                var sPath = window.location.href;
+                                var leng = sPath.length;
+                                var count = 0;
+                                var sTmp = "";
+
+                                for ( var i = 0; i < leng; i ++ )
+                                {
+                                    if ( sPath.substring ( i, i + 1 ) == "/" )
+                                        count ++ ;
+
+                                    if ( count == 4 )
+                                    {
+                                        sTmp = sPath.substring ( 0, i );
+                                        break;
+                                    }
+                                }
+
+                                try {
+                                    var ss = new ActiveXObject("AxDiviceControl.AxComConnectDevice");
+                                    sPath = sTmp + "/basicInfoManage/getEncrypt_new.html";
+                                } catch(err) {
+                                    sPath = sTmp + "/basicInfoManage/getEncrypt2.html";
+                                }
+
+
+                                var ret = window.showModalDialog ( sPath, uPath, sFeatures );
+
+                                if ( ret[2] != "checkbutton" )
+                                {
+                                    event.returnValue = false;
+                                }
+
+                                if ( ret[0] != null && ret[0] != "" )
+                                {
+                                    form.ZHANGH.value = ret[0];
+                                }
+                                if ( ret[1] != null && ret[1] != "" )
+                                {
+                                    form.JIOYMM2.value = ret[1];
+                                }
+
+                            }
+
+
+                            function getEncryptTestNew(form,uPath)
+                            {
+                                var sFeatures = "dialogHeight: 400px; dialogWidth: 500px; edge: Sunken; center: Yes; help: No; resizable: No; status: No;";
+                                var sPath = window.location.href;
+                                var leng = sPath.length;
+                                var count = 0;
+                                var sTmp = "";
+
+                                for ( var i = 0; i < leng; i ++ )
+                                {
+                                    if ( sPath.substring ( i, i + 1 ) == "/" )
+                                        count ++ ;
+
+                                    if ( count == 4 )
+                                    {
+                                        sTmp = sPath.substring ( 0, i );
+                                        break;
+                                    }
+                                }
+
+                                try {
+                                    var ss = new ActiveXObject("AxDiviceControl.AxComConnectDevice");
+                                    sPath = sTmp + "/basicInfoManage/getEncrypt_new.html";
+                                } catch(err) {
+                                    sPath = sTmp + "/basicInfoManage/getEncrypt2.html";
+                                }
+
+                                var ret = window.showModalDialog ( sPath, uPath, sFeatures );
+
+                                if ( ret[2] != "checkbutton" )
+                                {
+                                    event.returnValue = false;
+                                }
+
+                                if ( ret[0] != null && ret[0] != "" )
+                                {
+                                    form.cardNum.value = ret[0];
+                                }
+                                if ( ret[1] != null && ret[1] != "" )
+                                {
+                                    form.cardPassWd.value = ret[1];
+                                }
+
+                            }
+
+
+                            function clear(theForm) {
+                                var formSize = theForm.length;
+                                for (i=0 ; i < formSize; i++) {
+                                    var fieldObj = theForm.elements[i];
+                                    var fieldType = fieldObj.type + "";
+                                    fieldType = fieldType.toLowerCase();
+                                    if (fieldType == "radio" || fieldType == "checkbox") {
+                                        if (fieldObj.checked == true) {
+                                            fieldObj.checked = false;
+                                        }
+                                    }else if ((fieldType == "select-one"  && fieldObj.name != "prRelation") || fieldType == "text" || fieldType == "textarea") {
+                                        if (fieldObj.value != "") {
+                                            fieldObj.value = "";
+                                        }
+                                    }
+                                }
+                            }
+                        </script>
+
+                        <Script>
+                            function comein() {
+                                var ok = checkStrRange(document.all.UserBankCode, 4, 4, '机构号长度必须是4位！') && checkStrRange(document.all.WorkerId, 8, 8, '柜员号必须输入8位！') && checkStrRange(document.all.UserPwd, '8', '8', '密码必须输入8位！');
+                                if (!ok) {
+                                    return false;
+                                }
+
+                            }
+                        </Script>
+                        <div align="center">
+                            <center>
+                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#FFFFFF" width="100%" id="AutoNumber8" height="276"  background="/images/loginback.jpg">
+                                    <tr>
+                                        <td width="16%" height="176">　</td>
+                                        <td width="42%" height="176" align="center" valign="top">
+                                            <form name="loginpage" action="/login"  onkeydown="focusNext()">
+
+
+                                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="308" id="AutoNumber9" height="357">
+                                                    <tr>
+                                                        <td width="100%" colspan="2" height="16"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="100%" colspan="2" height="140"><b><font size="4"></font><span style="font-size: 9pt"><br>
+                  <br>
+                </span></b><span style="font-size: 9pt"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="56%" height="30" align="right"></td>
+                                                        <td width="44%" height="30"> <span style="font-size: 9pt">&nbsp;
+                  <input name="UserBankCode" type="text" id="UserBankCode" size="20" maxlength="4" >
+                </span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="29" align="right"></td>
+                                                        <td height="29"><span style="font-size: 9pt">&nbsp;
+                  <input name="WorkerId" type="text" id="WorkerId" size="20" maxlength="8">
+                </span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="56%" height="31" align="right"></td>
+                                                        <td width="44%" height="31"> <span style="font-size: 9pt">&nbsp;
+                  <input name="UserPwd" type="password" id="UserPwd" size="21" maxlength="8" >
+                </span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="100%" colspan="2" height="55"> <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber10">
+                                                            <tr>
+                                                                <td width="53%">
+                                                                <td width="47%">
+
+                                                                    <input name="button" type="image" src="/images/in.gif" border="0" onClick="return comein();" onMouseOver="this.style.cursor='hand'">
+                                                                </td>
+                                                            </tr>
+                                                        </table></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td width="100%" colspan="2" height="81">　</td>
+                                                    </tr>
+                                                </table>
+                                            </form>
+                                        </td>
+                                        <td width="42%" height="176">　</td>
+                                    </tr>
+                                </table>
+                            </center>
+                        </div>
+                    </td>
+                    <td width="1%" height="395" bgcolor="#5175C9"></td>
+                </tr>
+                <tr>
+                    <td width="1%" height="13" bgcolor="#5175C9">&nbsp;</td>
+                    <td width="98%" height="13" bgcolor="#5175C9">&nbsp;
+                    </td>
+                    <td width="1%" height="13" bgcolor="#5175C9">&nbsp;
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<div class="Noprint">
+    <table border="0" width="993" height="48" align="center">
+        <tr>
+            <td width="100%" align="center" height="36"><span style="font-size: 9pt">天正软件公司 Shanghai Topcheer Software Co.,Ltd.2006.06</span></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

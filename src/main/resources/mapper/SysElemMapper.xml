@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topcheer.spdbybt.mapper.SysElemMapper" >
+  <resultMap id="BaseResultMap" type="com.topcheer.spdbybt.entity.SysElem" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="transactionModelCode" property="transactionModelCode" jdbcType="VARCHAR" />
+    <result column="transactionModelName" property="transactionModelName" jdbcType="VARCHAR" />
+    <result column="operatorPerson" property="operatorPerson" jdbcType="VARCHAR" />
+    <result column="crtTimeStr" property="crtTimeStr" jdbcType="VARCHAR" />
+    <result column="crtTime" property="crtTime" jdbcType="TIMESTAMP" />
+    <result column="updTime" property="updTime" jdbcType="TIMESTAMP" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    se.id, se.transactionModelCode, se.transactionModelName, se.operatorPerson, se.crtTime, se.updTime, 
+    se.is_delete
+  </sql>
+
+  <sql id="SQL_SYSELEM_WHERE">
+    <if test="id != null">
+      AND se.id = #{id}
+    </if>
+    <if test="transactionModelCode != null">
+      AND se.transactionModelCode = #{transactionModelCode}
+    </if>
+    <if test="transactionModelName != null and transactionModelName.length() != 0">
+      AND se.transactionModelName like '%${transactionModelName}%'
+    </if>
+    <if test="operatorPerson != null and operatorPerson.length() != 0">
+      AND se.operatorPerson = #{operatorPerson}
+    </if>
+    <if test="crtTime != null and crtTime.length() != 0">
+      AND se.crtTime = #{crtTime}
+    </if>
+    <if test="updTime != null and updTime.length() != 0">
+      AND se.updTime  = #{updTime}
+    </if>
+    <if test="isDelete != null">
+      AND se.IS_DELETE_ = #{isDelete}
+    </if>
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from syselem se
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from syselem se
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.topcheer.spdbybt.entity.SysElem" >
+    insert into syselem  (id, transactionModelCode, transactionModelName,
+      operatorPerson, crtTime, updTime,
+      is_delete)
+    values (#{id,jdbcType=INTEGER}, #{transactionModelCode,jdbcType=VARCHAR}, #{transactionModelName,jdbcType=VARCHAR},
+      #{operatorPerson,jdbcType=VARCHAR}, #{crtTime,jdbcType=TIMESTAMP}, #{updTime,jdbcType=TIMESTAMP},
+      #{isDelete,jdbcType=INTEGER}
+  </insert>
+  <insert id="insertSelective" parameterType="com.topcheer.spdbybt.entity.SysElem" >
+    insert into syselem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="transactionModelCode != null" >
+        transactionModelCode,
+      </if>
+      <if test="transactionModelName != null" >
+        transactionModelName,
+      </if>
+      <if test="operatorPerson != null" >
+        operatorPerson,
+      </if>
+      <if test="crtTime != null" >
+        crtTime,
+      </if>
+      <if test="updTime != null" >
+        updTime,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="transactionModelCode != null" >
+        #{transactionModelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionModelName != null" >
+        #{transactionModelName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorPerson != null" >
+        #{operatorPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTime != null" >
+        #{crtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null" >
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.topcheer.spdbybt.entity.SysElem" >
+    update syselem
+    <set >
+      <if test="transactionModelCode != null" >
+        transactionModelCode = #{transactionModelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transactionModelName != null" >
+        transactionModelName = #{transactionModelName,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorPerson != null" >
+        operatorPerson = #{operatorPerson,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTime != null" >
+        crtTime = #{crtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null" >
+        updTime = #{updTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.topcheer.spdbybt.entity.SysElem" >
+    update syselem
+    set transactionModelCode = #{transactionModelCode,jdbcType=VARCHAR},
+      transactionModelName = #{transactionModelName,jdbcType=VARCHAR},
+      operatorPerson = #{operatorPerson,jdbcType=VARCHAR},
+      crtTime = #{crtTime,jdbcType=TIMESTAMP},
+      updTime = #{updTime,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getSysElemList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+
+    select  <include refid="Base_Column_List" />,date_format(se.crtTime ,'%Y-%c-%d') crtTimeStr
+    from syselem se
+    <where>
+      <include  refid="SQL_SYSELEM_WHERE"/>
+      and is_delete=0
+    </where>
+  </select>
+</mapper>

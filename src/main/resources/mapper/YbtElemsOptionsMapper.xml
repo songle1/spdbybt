@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.topcheer.spdbybt.mapper.YbtElemsOptionsMapper" >
+  <resultMap id="BaseResultMap" type="com.topcheer.spdbybt.entity.YbtElemsOptions" >
+    <id column="optionId" property="optionid" jdbcType="VARCHAR" />
+    <result column="optionDesc" property="optiondesc" jdbcType="VARCHAR" />
+    <result column="fieldId" property="fieldid" jdbcType="VARCHAR" />
+    <result column="operatorBankCode" property="operatorbankcode" jdbcType="VARCHAR" />
+    <result column="operatorCode" property="operatorcode" jdbcType="VARCHAR" />
+    <result column="updateDate" property="updatedate" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updatetime" jdbcType="VARCHAR" />
+    <result column="remark1" property="remark1" jdbcType="VARCHAR" />
+    <result column="remark2" property="remark2" jdbcType="VARCHAR" />
+    <result column="remark3" property="remark3" jdbcType="VARCHAR" />
+    <result column="remark4" property="remark4" jdbcType="VARCHAR" />
+    <result column="remark5" property="remark5" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yeo.optionId optionid,
+    yeo.optionDesc optiondesc,
+    yeo.atomTypeId atomtypeid,
+    yeo.fieldId fieldid,
+    yeo.operatorBankCode operatorbankcode,
+    yeo.operatorCode operatorcode,
+    yeo.updateDate updatedate,
+    yeo.updateTime updatetime,
+    yeo.remark1 remark1,
+    yeo.remark2 remark2,
+    yeo.remark3 remark3,
+    yeo.remark4 remark4,
+    yeo.remark5 remark5
+  </sql>
+
+  <sql id="SQL_ElemOption_WHERE">
+    <if test="atomtypeid != null and atomtypeid.length() != 0">
+      AND  yeo.atomTypeId = #{atomtypeid}
+    </if>
+    <if test="fieldid != null and fieldid.length() != 0">
+      AND yeo.fieldId = #{fieldid}
+    </if>
+  </sql>
+
+
+  <select id="selectByPrimaryKey" resultType="com.topcheer.spdbybt.entity.YbtElemsOptions" parameterType="com.topcheer.spdbybt.entity.YbtElemsOptions" >
+    select 
+    <include refid="Base_Column_List" />
+    from ybt_elemsoptions yeo where yeo.optionId = #{optionid,jdbcType=VARCHAR}
+    and yeo.atomTypeId = #{atomtypeid,jdbcType=VARCHAR}
+    and yeo.fieldId = #{fieldid,jdbcType=VARCHAR}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="com.topcheer.spdbybt.entity.YbtElemsOptions" >
+    delete from ybt_elemsoptions
+    where optionId = #{optionid,jdbcType=VARCHAR} and atomTypeId = #{atomtypeid,jdbcType=VARCHAR}
+    and fieldId = #{fieldid,jdbcType=VARCHAR}
+  </delete>
+
+
+  <insert id="insertSelective" parameterType="com.topcheer.spdbybt.entity.YbtElemsOptions" >
+    insert into ybt_elemsoptions
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="optionid != null" >
+        optionId,
+      </if>
+      <if test="optiondesc != null" >
+        optionDesc,
+      </if>
+      <if test="atomtypeid != null" >
+        atomTypeId,
+      </if>
+      <if test="fieldid != null" >
+        fieldId,
+      </if>
+      <if test="operatorbankcode != null" >
+        operatorBankCode,
+      </if>
+      <if test="operatorcode != null" >
+        operatorCode,
+      </if>
+      <if test="updatedate != null" >
+        updateDate,
+      </if>
+      <if test="updatetime != null" >
+        updateTime,
+      </if>
+      <if test="remark1 != null" >
+        remark1,
+      </if>
+      <if test="remark2 != null" >
+        remark2,
+      </if>
+      <if test="remark3 != null" >
+        remark3,
+      </if>
+      <if test="remark4 != null" >
+        remark4,
+      </if>
+      <if test="remark5 != null" >
+        remark5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="optionid != null" >
+        #{optionid,jdbcType=VARCHAR},
+      </if>
+      <if test="optiondesc != null" >
+        #{optiondesc,jdbcType=VARCHAR},
+      </if>
+      <if test="atomtypeid != null" >
+        #{atomtypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldid != null" >
+        #{fieldid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorbankcode != null" >
+        #{operatorbankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorcode != null" >
+        #{operatorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        #{remark5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.topcheer.spdbybt.entity.YbtElemsOptions" >
+    update ybt_elemsoptions
+    <set >
+      <if test="optiondesc != null" >
+        optionDesc = #{optiondesc,jdbcType=VARCHAR},
+      </if>
+      <if test="atomtypeid != null" >
+        atomTypeId = #{atomtypeid,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldid != null" >
+        fieldId = #{fieldid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorbankcode != null" >
+        operatorBankCode = #{operatorbankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorcode != null" >
+        operatorCode = #{operatorcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        updateDate = #{updatedate,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        updateTime = #{updatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark1 != null" >
+        remark1 = #{remark1,jdbcType=VARCHAR},
+      </if>
+      <if test="remark2 != null" >
+        remark2 = #{remark2,jdbcType=VARCHAR},
+      </if>
+      <if test="remark3 != null" >
+        remark3 = #{remark3,jdbcType=VARCHAR},
+      </if>
+      <if test="remark4 != null" >
+        remark4 = #{remark4,jdbcType=VARCHAR},
+      </if>
+      <if test="remark5 != null" >
+        remark5 = #{remark5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where optionId = #{optionid,jdbcType=VARCHAR} and atomTypeId = #{atomtypeid,jdbcType=VARCHAR} and fieldId = #{fieldid,jdbcType=VARCHAR}
+  </update>
+
+  <!-- 查询所有的数据字典信息 -->
+  <select id="getElemsOptionsList" resultType="com.topcheer.spdbybt.entity.YbtElemsOptions" parameterType="com.topcheer.spdbybt.entity.YbtElemsOptions">
+
+    select  <include refid="Base_Column_List" />,yme.atomTypeName atomtypename,yfe.fieldCName fieldcname,
+    case  when yfe.fieldGetType = '1' then '全行统一'
+          when yfe.fieldGetType = '2' then '各保险公司分别定义' end AS fieldgettypename
+    from ybt_elemsoptions yeo left join
+    ybt_moduleelems yme on yeo.atomTypeId = yme.atomTypeId
+    left join ybt_fieldelems yfe on yeo.fieldId = yfe.fieldId
+    <where>
+      <include  refid="SQL_ElemOption_WHERE"/>
+    </where>
+  </select>
+
+
+</mapper>
